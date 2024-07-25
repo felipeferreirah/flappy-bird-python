@@ -140,12 +140,12 @@ venv.bak/
 # mkdocs documentation
 /site
 
-.fleet/
 .venv
 # mypy
 .mypy_cache/
 .dmypy.json
 dmypy.json
+__pycache__
 
 # Pyre type checker
 .pyre/
