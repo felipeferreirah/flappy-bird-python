@@ -12,6 +12,7 @@ from objects.object import Object
 class Bird(pygame.sprite.Sprite):
     def __init__(self,*groups):
         self._layer = Layer.PLAYER
+        self.paused = False
         self.images = [
             assets.get_sprite("bluebird-downflap"),
             assets.get_sprite("bluebird-midflap"),
@@ -27,21 +28,23 @@ class Bird(pygame.sprite.Sprite):
         super().__init__(*groups)
 
     def update(self):
-        self.images.insert(0, self.images.pop())
-        self.image = self.images[0]
+        if not self.paused:
+            self.images.insert(0, self.images.pop())
+            self.image = self.images[0]
 
-        self.flap += configs.GRAVITY
-        self.rect.y += self.flap
+            self.flap += configs.GRAVITY
+            self.rect.y += self.flap
 
-        # levar o bird da posição 0 (escondida) até a posição 50
-        if self.rect.x <= 50:
-            self.rect.x += 2
+            # levar o bird da posição 0 (escondida) até a posição 50
+            if self.rect.x <= 50:
+                self.rect.x += 2
 
-    def handle_event(self, event):
-        if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-            self.flap = 0
-            self.flap -= 5
-            assets.play_audio('wing')
+    def fly_event(self, event):
+        if not self.paused:
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                self.flap = 0
+                self.flap -= 5
+                assets.play_audio('wing')
 
 
     def check_collision(self, sprites):
@@ -58,3 +61,6 @@ class Bird(pygame.sprite.Sprite):
                 sprite.kill()
                 return True
         return False
+
+    def pause(self):
+        self.paused = not self.paused

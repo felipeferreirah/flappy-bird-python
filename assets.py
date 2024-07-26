@@ -26,6 +26,9 @@ def load_audios():
         if file == 'intro.mp3':
             audios[file.split('.')[0]].set_volume(0.1)
 
+        if file == 'game.mp3':
+            audios[file.split('.')[0]].set_volume(0.4)
+
         if file == 'loose.mp3':
             audios[file.split('.')[0]].set_volume(0.1)
 
@@ -41,7 +44,8 @@ def load_audios():
 def play_audio(name):
     global channels
     if name in channels:  # Verifica se já existe um canal para este som
-        channels[name].play(audios[name])  # Reproduz no canal existente
+        if not channels[name].get_busy():
+            channels[name].play(audios[name])  # Reproduz no canal existente
     else:
         channel = pygame.mixer.Channel(len(channels))  # Cria um novo canal
         channels[name] = channel  # Associa o canal ao som no dicionário

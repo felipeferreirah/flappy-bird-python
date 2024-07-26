@@ -10,7 +10,9 @@ from layer import Layer
 class Column(pygame.sprite.Sprite):
     def __init__(self, *groups):
         self._layer = Layer.OBSTACLE
-        self.gap = 70
+        self.gap = 50
+
+        self.paused = False
 
         self.sprite = assets.get_sprite("pipe-green")
         self.sprite_rect = self.sprite.get_rect()
@@ -40,7 +42,8 @@ class Column(pygame.sprite.Sprite):
         super().__init__(*groups)
 
     def update(self):
-        self.rect.x -= 1
+        if not self.paused:
+            self.rect.x -= 1
 
         if self.rect.right <= 0:
             self.kill()
@@ -51,3 +54,6 @@ class Column(pygame.sprite.Sprite):
             self.passed = True
             return True
         return False
+
+    def pause(self):
+        self.paused = not self.paused
