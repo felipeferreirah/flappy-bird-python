@@ -29,6 +29,9 @@ def load_audios():
         if file == 'game.mp3':
             audios[file.split('.')[0]].set_volume(0.4)
 
+        if file == 'rock.mp3':
+            audios[file.split('.')[0]].set_volume(0.4)
+
         if file == 'loose.mp3':
             audios[file.split('.')[0]].set_volume(0.1)
 
