@@ -80,7 +80,7 @@ class Bird(pygame.sprite.Sprite):
                 return True
         return False
 
-    def check_collision_boquetossauro(self, sprites):
+    def check_collision_object(self, sprites):
         for sprite in sprites:
             if (type(sprite) is Object) and sprite.mask.overlap(self.mask, (
             self.rect.x - sprite.rect.x, self.rect.y - sprite.rect.y)):

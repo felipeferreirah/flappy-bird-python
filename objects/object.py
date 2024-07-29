@@ -12,24 +12,6 @@ class Object(pygame.sprite.Sprite):
         self._layer = Layer.OBJECT
         self.images = [
             pygame.transform.scale(assets.get_sprite("boqueta"), object_size),
-            # pygame.transform.scale(assets.get_sprite("mumia (1)"), object_size),
-            # pygame.transform.scale(assets.get_sprite("mumia (2)"), object_size),
-            # pygame.transform.scale(assets.get_sprite("mumia (3)"), object_size),
-            # pygame.transform.scale(assets.get_sprite("mumia (4)"), object_size),
-            # pygame.transform.scale(assets.get_sprite("mumia (5)"), object_size),
-            # pygame.transform.scale(assets.get_sprite("mumia (6)"), object_size),
-            # pygame.transform.scale(assets.get_sprite("mumia (7)"), object_size),
-            # pygame.transform.scale(assets.get_sprite("mumia (8)"), object_size),
-            # pygame.transform.scale(assets.get_sprite("mumia (9)"), object_size),
-            # pygame.transform.scale(assets.get_sprite("mumia (10)"), object_size),
-            # pygame.transform.scale(assets.get_sprite("mumia (11)"), object_size),
-            # pygame.transform.scale(assets.get_sprite("mumia (12)"), object_size),
-            # pygame.transform.scale(assets.get_sprite("mumia (13)"), object_size),
-            # pygame.transform.scale(assets.get_sprite("mumia (14)"), object_size),
-            # pygame.transform.scale(assets.get_sprite("mumia (15)"), object_size),
-            # pygame.transform.scale(assets.get_sprite("mumia (16)"), object_size),
-            # pygame.transform.scale(assets.get_sprite("mumia (17)"), object_size),
-            # pygame.transform.scale(assets.get_sprite("mumia (18)"), object_size),
         ]
 
         self.image = self.images[0]

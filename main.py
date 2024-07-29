@@ -158,7 +158,7 @@ def update_game():
         score.value += 1
         assets.play_audio('coin')
 
-    if bird.check_collision_boquetossauro(sprites) and not game_over:
+    if bird.check_collision_object(sprites) and not game_over:
         score.value += 10
         # if score.value >= 3:
         # special_mode = True
@@ -180,6 +180,7 @@ def main():
     global game_started, game_over, special_mode
     pygame.display.set_caption('Flappy World')
     while running:
+
         if not handle_events():
             break
 
